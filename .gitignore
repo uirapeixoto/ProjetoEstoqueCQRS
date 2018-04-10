@@ -3,3 +3,13 @@
 ################################################################################
 
 /.vs/ProjetoEstoque/v15/Server/sqlite3
+/packages
+/ProjetoEstoque.Command/bin/Debug
+/ProjetoEstoque.Command/obj/Debug
+/ProjetoEstoque.Infra/bin/Debug
+/ProjetoEstoque.Infra/obj/Debug
+/ProjetoEstoque.Query/bin/Debug
+/ProjetoEstoque.Query/obj/Debug
+/ProjetoEstoque.Web/bin
+/.vs/ProjetoEstoque/v15
+/ProjetoEstoque.Web/obj/Debug
