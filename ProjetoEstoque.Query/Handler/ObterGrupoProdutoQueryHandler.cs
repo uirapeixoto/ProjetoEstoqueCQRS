@@ -14,7 +14,7 @@ namespace ProjetoEstoque.Query.Handler
             return new List<ObterGrupoProdutoQueryResult>
             {
                 new ObterGrupoProdutoQueryResult(1, "Livros", true),
-                new ObterGrupoProdutoQueryResult(2, "Mouses", true),
+                new ObterGrupoProdutoQueryResult(2, "Mouses", false),
                 new ObterGrupoProdutoQueryResult(3, "Monitores", true)
             };
         }
