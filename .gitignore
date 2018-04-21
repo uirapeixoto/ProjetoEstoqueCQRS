@@ -13,3 +13,5 @@
 /ProjetoEstoque.Web/bin
 /.vs/ProjetoEstoque/v15
 /ProjetoEstoque.Web/obj/Debug
+/ProjetoEstoque.Test/bin/Debug
+/ProjetoEstoque.Test/obj/Debug
