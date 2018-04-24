@@ -31,6 +31,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -41,17 +47,33 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="ObterGrupoProdutoQuery.cs" />
     <Compile Include="Handler\ObterGrupoProdutoQueryHandler.cs" />
     <Compile Include="Handler\IQueryHandler.cs" />
     <Compile Include="IQuery.cs" />
     <Compile Include="Pagination.cs" />
+    <Compile Include="Public\Handler\ObterCidadesDoEstadoQueryHandler.cs" />
+    <Compile Include="Public\Handler\ObterCidadesQueryHandler.cs" />
+    <Compile Include="Public\Handler\ObterEstadosQueryHandler.cs" />
+    <Compile Include="Public\ObterCidadesDoEstadoQuery.cs" />
+    <Compile Include="Public\ObterCidadesQuery.cs" />
+    <Compile Include="Public\ObterEstadoQuery.cs" />
+    <Compile Include="Public\Result\ObterCidadesDoEstadoQueryResult.cs" />
+    <Compile Include="Public\Result\ObterCidadesQueryResult.cs" />
+    <Compile Include="Public\Result\ObterEstadosQueryResult.cs" />
     <Compile Include="Result\ObterGrupoProdutoQueryResult.cs" />
     <Compile Include="Result\PagedResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Result\IQueryResult.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\ProjetoEstoque.Infra\ProjetoEstoque.Infra.csproj">
+      <Project>{561808de-54be-4db6-b749-23e9d6d39091}</Project>
+      <Name>ProjetoEstoque.Infra</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

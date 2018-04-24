@@ -1,4 +1,8 @@
-﻿using ProjetoEstoque.Query.Handler;
+﻿using ProjetoEstoque.Command.GrupoProduto.Handler;
+using ProjetoEstoque.Infra.ControleEstoque;
+using ProjetoEstoque.Infra.Interface;
+using ProjetoEstoque.Infra.Public;
+using ProjetoEstoque.Query.Handler;
 using SimpleInjector;
 using SimpleInjector.Integration.Web;
 using SimpleInjector.Integration.Web.Mvc;
@@ -28,6 +32,13 @@ namespace ProjetoEstoque.Web
             //Registrando as implmementações
             typeof(ObterGrupoProdutoQueryHandler).Assembly.GetExportedTypes().Where(x => x.Namespace.EndsWith("Handler")).Where(x => x.GetInterfaces().Any())
                 .ToList().ForEach(x => container.Register(x.GetInterfaces().Single(), x, Lifestyle.Transient));
+
+            typeof(RemoverGrupoProdutoCommandHandler).Assembly.GetExportedTypes().Where(x => x.Namespace.EndsWith("Handler")).Where(x => x.GetInterfaces().Any())
+                .ToList().ForEach(x => container.Register(x.GetInterfaces().Single(), x, Lifestyle.Transient));
+
+            //Dependecy of workflow engine
+            container.Register<IControleEstoqueContext, ControleEstoqueContext>(Lifestyle.Scoped);
+            container.Register<IPublicContext, PublicContext>(Lifestyle.Scoped);
 
             // This is an extension method from the integration package.
             container.RegisterMvcControllers(Assembly.GetExecutingAssembly());

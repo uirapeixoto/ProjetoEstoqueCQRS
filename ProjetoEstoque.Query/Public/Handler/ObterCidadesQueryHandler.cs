@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjetoEstoque.Query
+namespace ProjetoEstoque.Query.Public.Handler
 {
-    public class Class1
+    class ObterCidadesQueryHandler
     {
     }
 }

@@ -31,6 +31,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -41,9 +42,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GrupoProduto\Handler\RemoverGrupoProdutoCommandHandler.cs" />
+    <Compile Include="GrupoProduto\Handler\SalvarGrupoProdutoCommandHandler.cs" />
+    <Compile Include="GrupoProduto\RemoverGrupoProdutoCommand.cs" />
+    <Compile Include="GrupoProduto\Result\SalvarGrupoPrudutoCommandResult.cs" />
+    <Compile Include="GrupoProduto\SalvarGrupoProdutoCommand.cs" />
     <Compile Include="Handler\ICommandHandler.cs" />
     <Compile Include="ICommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ProjetoEstoque.Infra\ProjetoEstoque.Infra.csproj">
+      <Project>{561808de-54be-4db6-b749-23e9d6d39091}</Project>
+      <Name>ProjetoEstoque.Infra</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

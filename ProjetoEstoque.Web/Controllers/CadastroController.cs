@@ -1,4 +1,7 @@
-﻿using ProjetoEstoque.Query;
+﻿using ProjetoEstoque.Command;
+using ProjetoEstoque.Command.GrupoProduto;
+using ProjetoEstoque.Command.GrupoProduto.Result;
+using ProjetoEstoque.Query;
 using ProjetoEstoque.Query.Handler;
 using ProjetoEstoque.Query.Result;
 using ProjetoEstoque.Web.ViewModels;
@@ -10,11 +13,14 @@ namespace ProjetoEstoque.Web.Controllers
 {
     public class CadastroController : BaseController
     {
-        readonly IQueryHandler<ObterGrupoProdutoQuery, IEnumerable<ObterGrupoProdutoQueryResult>> obterGrupoProdutoQueryHandler;
+        private readonly IQueryHandler<ObterGrupoProdutoQuery, IEnumerable<ObterGrupoProdutoQueryResult>> obterGrupoProdutoQueryHandler;
+        private readonly ICommandHandler<SalvarGrupoProdutoCommand, SalvarGrupoPrudutoCommandResult> salvarGrupoProdutoCommandHandler;
 
-        public CadastroController(IQueryHandler<ObterGrupoProdutoQuery, IEnumerable<ObterGrupoProdutoQueryResult>> obterGrupoProdutoQueryHandler)
+        public CadastroController(IQueryHandler<ObterGrupoProdutoQuery, IEnumerable<ObterGrupoProdutoQueryResult>> obterGrupoProdutoQueryHandler,
+            ICommandHandler<SalvarGrupoProdutoCommand, SalvarGrupoPrudutoCommandResult> salvarGrupoProdutoCommandHandler)
         {
             this.obterGrupoProdutoQueryHandler = obterGrupoProdutoQueryHandler;
+            this.salvarGrupoProdutoCommandHandler = salvarGrupoProdutoCommandHandler;
         }
 
         [Authorize]
@@ -27,6 +33,27 @@ namespace ProjetoEstoque.Web.Controllers
             });
             return View(result);
         }
+        [HttpPost]
+        public ActionResult GrupoProduto(int id) => Json(obterGrupoProdutoQueryHandler.Handle(new ObterGrupoProdutoQuery(id)).Select(t => new GrupoProdutoViewModel
+            {
+                Nome = t.Nome,
+                Ativo = t.Ativo
+
+            }));
+
+        [HttpPost]
+        public ActionResult ExcluirGrupoProduto(int id)
+        {
+            return Json(id);
+        }
+
+        [HttpPost]
+        public ActionResult SalvarGrupoProduto(int id, string nome, bool ativo)
+        {
+            var result = salvarGrupoProdutoCommandHandler.Handle(new SalvarGrupoProdutoCommand(id, nome, ativo));
+            return Json(result);
+        }
+
         [Authorize]
         public ActionResult MarcaProduto()
         {
