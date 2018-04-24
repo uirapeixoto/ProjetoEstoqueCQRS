@@ -209,5 +209,6 @@ namespace ProjetoEstoque.Infra.ControleEstoque
                 .HasForeignKey(e => e.ID_USUARIO)
                 .WillCascadeOnDelete(false);
         }
+
     }
 }
